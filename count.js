@@ -20,10 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     countDisplay.style.display = "none";
 
-    document.addEventListener("keydown", function (event) {
-        if (event.code !== "Space") return;
-        event.preventDefault();
-
+    function handleCount() {
         if (!started) {
             title.style.display = "none";
             subtitle.style.display = "none";
@@ -33,9 +30,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         count++;
         numberDisplay.textContent = count;
+        vibrate();
 
         imageIndex = (imageIndex + 1) % images.length;
         image.src = images[imageIndex];
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.code !== "Space") return;
+        event.preventDefault();
+        handleCount();
     });
 
+    document.addEventListener("touchstart", handleCount);
+
+    function vibrate() {
+        if ("vibrate" in navigator) {
+            navigator.vibrate(50);
+        }
+    }
 });
