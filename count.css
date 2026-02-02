@@ -23,7 +23,7 @@ img {
     flex-wrap: wrap;
     flex-direction: row;
     margin: 0 auto; 
-    width: 350px;
+    width: min(350px, 90%);
     height: auto;
     border-radius: 15px;
     margin-top: 50px;
@@ -56,3 +56,21 @@ h1, h2 {
     font-size: 48px;
     font-weight: bold;
 } 
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .number {
+    font-size: 40px;
+  }
+
+  body {
+    background-image: url(phone.jpg);
+  }
+}
